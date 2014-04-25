@@ -8,7 +8,7 @@ Gem::Specification.new do |spec|
   spec.version       = CookielessSessions::VERSION
   spec.authors       = ["Taktsoft"]
   spec.email         = ["developers@taktsoft.com"]
-  spec.summary       = "This Gem enables you to use your Rails Application without cookies by using a Session-ID GET-Parameter"
+  spec.summary       = "Implements a fallback mechanism for keeping Session-IDs (via GET-Parameter) on clients that doesn't support or allow cookies."
   spec.description   = spec.summary
   spec.homepage      = "https://github.com/taktsoft/cookieless_sessions"
   spec.license       = "MIT"
@@ -22,7 +22,7 @@ Gem::Specification.new do |spec|
   spec.add_development_dependency "rake", "~> 10.3"
   spec.add_development_dependency "rspec-rails", "~> 2.14"
   spec.add_development_dependency "guard-rspec", "~> 4.2"
-  spec.add_development_dependency "capybara", "~> 2.1.0"
+  spec.add_development_dependency "capybara", "~> 2.2"
   spec.add_development_dependency "poltergeist", "~> 1.5"
   spec.add_development_dependency "pry", "~> 0.9"
   spec.add_development_dependency "rails", [">= 3.0.0", "< 5.0"]

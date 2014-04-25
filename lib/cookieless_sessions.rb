@@ -1,7 +1,6 @@
 require "cookieless_sessions/version"
 
 module CookielessSessions
-
   module EnabledController
     extend ActiveSupport::Concern
 

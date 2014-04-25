@@ -5,8 +5,8 @@
 #
 # See http://rubydoc.info/gems/rspec-core/RSpec/Core/Configuration
 
-ENV["RAILS_ENV"] ||= 'test'
-require File.expand_path("../dummy/config/environment", __FILE__)
+ENV['RAILS_ENV'] ||= 'test'
+require File.expand_path('../dummy/config/environment', __FILE__)
 require 'rspec/rails'
 require 'capybara/rspec'
 require 'capybara/poltergeist'
@@ -37,5 +37,5 @@ def rails_app_session_key
 end
 
 def extract_session_id_from_headers(headers, session_key=rails_app_session_key)
-  headers["Set-Cookie"].match(/\A#{session_key}=(?<sid>[0-9a-f]+);/)[:sid]
+  headers['Set-Cookie'].match(/\A#{session_key}=(?<sid>[0-9a-f]+);/)[:sid]
 end
