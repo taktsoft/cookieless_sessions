@@ -5,10 +5,6 @@
 
 Implements a fallback mechanism for keeping Session-IDs (via GET-Parameter) on clients that doesn't support or allow cookies.
 
-## How it works
-
-There isn't any magic in this gem. This gem has only one module which implements a concern for controllers. The important method in this module is _default_url_options_ and it only adds the _session_key_ with the _session_id_ to the options hash.
-
 ## Requirements
 
 An application based on Rails 3.x or 4.x configured with a session storage that supports the _cookie_only: false_ option (e.g. [redis-session-store](https://rubygems.org/gems/redis-session-store)).
@@ -60,6 +56,10 @@ If you want to disable sessions via GET parameter for a certain controller, you 
         end
     end
 ```
+## Implementation
+
+There isn't any magic in this gem. This gem has only one module which implements a concern for controllers. The important method in this module is _default_url_options_ and it only adds the _session_key_ with the _session_id_ to the options hash.
+
 
 ## Contributing
 
