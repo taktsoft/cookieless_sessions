@@ -8,7 +8,15 @@
 ENV["RAILS_ENV"] ||= 'test'
 require File.expand_path("../dummy/config/environment", __FILE__)
 require 'rspec/rails'
+require 'capybara/rspec'
+require 'capybara/poltergeist'
 require 'pry'
+
+# We're using Poltergeist with phantomjs, because this driver allows to
+# enable and disable cookies. We need this feature for our tests.
+Capybara.javascript_driver = :poltergeist
+
+
 RSpec.configure do |config|
   config.treat_symbols_as_metadata_keys_with_true_values = true
   config.run_all_when_everything_filtered = true
@@ -20,18 +28,14 @@ RSpec.configure do |config|
   #     --seed 1234
   config.order = 'random'
 end
-  #Rails.application.routes.draw do
-  #  get "/home" => "application#home", as: :root
-  #  get "/customized_controller_home" => "customized_on_expired_session#home", as: :customized_controller_home
-  #end
-#
-  #class ApplicationController < ActionController::Base
-  #  include Frikandel::LimitSessionLifetime
-#
-  #  protect_from_forgery with: :exception
-#
-  #  def home
-  #    render text: "testing"
-  #  end
-  #end
-#
+
+
+# Some helper methods ...
+
+def rails_app_session_key
+  Rails.application.config.session_options[:key]
+end
+
+def extract_session_id_from_headers(headers, session_key=rails_app_session_key)
+  headers["Set-Cookie"].match(/\A#{session_key}=(?<sid>[0-9a-f]+);/)[:sid]
+end

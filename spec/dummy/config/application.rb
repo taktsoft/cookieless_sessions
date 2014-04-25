@@ -10,6 +10,7 @@ require "sprockets/railtie"
 
 Bundler.require(*Rails.groups)
 require "cookieless_sessions"
+require "redis-session-store"
 
 module Dummy
   class Application < Rails::Application

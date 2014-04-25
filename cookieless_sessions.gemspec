@@ -6,11 +6,11 @@ require 'cookieless_sessions/version'
 Gem::Specification.new do |spec|
   spec.name          = "cookieless_sessions"
   spec.version       = CookielessSessions::VERSION
-  spec.authors       = ["Michael Berg", "Taktsoft"]
+  spec.authors       = ["Taktsoft"]
   spec.email         = ["developers@taktsoft.com"]
   spec.summary       = "This Gem enables you to use your Rails Application without cookies by using a Session-ID GET-Parameter"
-  spec.description   = %q{Write a longer description. Optional.}
-  spec.homepage      = ""
+  spec.description   = spec.summary
+  spec.homepage      = "https://github.com/taktsoft/cookieless_sessions"
   spec.license       = "MIT"
 
   spec.files         = `git ls-files -z`.split("\x0")
@@ -19,10 +19,13 @@ Gem::Specification.new do |spec|
   spec.require_paths = ["lib"]
 
   spec.add_development_dependency "bundler", "~> 1.6"
-  spec.add_development_dependency "rake"
-  spec.add_development_dependency "rspec-rails"
-  spec.add_development_dependency "guard-rspec"
-  spec.add_development_dependency "pry"
-  spec.add_development_dependency "rails", '>= 3.2.0'
-  spec.add_development_dependency "sqlite3"
+  spec.add_development_dependency "rake", "~> 10.3"
+  spec.add_development_dependency "rspec-rails", "~> 2.14"
+  spec.add_development_dependency "guard-rspec", "~> 4.2"
+  spec.add_development_dependency "capybara", "~> 2.1.0"
+  spec.add_development_dependency "poltergeist", "~> 1.5"
+  spec.add_development_dependency "pry", "~> 0.9"
+  spec.add_development_dependency "rails", [">= 3.0.0", "< 5.0"]
+  spec.add_development_dependency "sqlite3", "~> 1.3"
+  spec.add_development_dependency "redis-session-store", "~> 0.7"
 end

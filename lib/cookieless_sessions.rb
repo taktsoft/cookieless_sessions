@@ -5,33 +5,28 @@ module CookielessSessions
   module EnabledController
     extend ActiveSupport::Concern
 
-    included do
-      append_before_filter :apply_default_url_options
-    end
+  protected
 
-    private
+    def default_url_options
+      options = super.dup || {} # super.dup is very important here!
 
-    def apply_default_url_options
-      owner_class = method(:default_url_options).owner
-      unless owner_class.class_variable_defined?(:@@already_cookielessed)
-        owner_class.send(:alias_method, :original_default_url_options, :default_url_options)
-        owner_class.send(:remove_method, :default_url_options)
-        owner_class.send(:define_method, :default_url_options, default_url_options_block)
-        owner_class.class_variable_set(:@@already_cookielessed, true)
+      if session_id.present?
+        options[session_key] = session_id
       end
-    end
 
-    def default_url_options_block
-      return Proc.new do
-        options = original_default_url_options || {}
-        options[session_key] = request.session_options[:id] ### FIXME testen ob dies immer neu evaluiert wird - die ID muss pro aufruf neu eingelesen werden!!
-        options
-      end
+      return options
     end
 
     def session_key
-      "_aktionsmodule_session".intern
+      Rails.application.config.session_options[:key]
     end
 
+    def session_id
+      request.session_options[:id]
+    end
+
+    def session_is_not_cookie_only?
+      Rails.application.config.session_options[:cookie_only] == false
+    end
   end
 end
