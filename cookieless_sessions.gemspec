@@ -8,7 +8,7 @@ Gem::Specification.new do |spec|
   spec.version       = CookielessSessions::VERSION
   spec.authors       = ["Taktsoft"]
   spec.email         = ["developers@taktsoft.com"]
-  spec.summary       = "Implements a fallback mechanism for keeping Session-IDs (via GET-Parameter) on clients that doesn't support or allow cookies."
+  spec.summary       = "#{spec.name} implements a fallback mechanism for keeping Session-IDs (via GET-Parameter) on clients that doesn't support or allow cookies."
   spec.description   = spec.summary
   spec.homepage      = "https://github.com/taktsoft/cookieless_sessions"
   spec.license       = "MIT"

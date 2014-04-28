@@ -3,7 +3,17 @@
 [![Build Status](https://api.travis-ci.org/taktsoft/cookieless_sessions.png)](https://travis-ci.org/taktsoft/cookieless_sessions)
 [![Code Climate](https://codeclimate.com/github/taktsoft/cookieless_sessions.png)](https://codeclimate.com/github/taktsoft/cookieless_sessions)
 
-Implements a fallback mechanism for keeping Session-IDs (via GET-Parameter) on clients that doesn't support or allow cookies.
+CookielessSessions implements a fallback mechanism for keeping Session-IDs _(via GET-Parameter)_ on clients that doesn't support or allow cookies.
+
+By default, the server sends a _Set-Cookie_ header to the client. If the client supports and allows cookies, it will send back this _Cookie_ header back in the next request. If not, then there won't be a _Cookie_ header in the next requests from the client to the server and the server will initiate a new session for the client, in every request. In this case, sessions won't work.
+
+This is what this gem was built for. There is only one other way to transfer a Session-ID between server and client: via GET-Paramters _(and of course POST-Parameters)_.
+
+## Implementation
+
+There isn't any magic in this gem. This gem consists of one module which implements a concern for controllers. The important method in this module is _default_url_options_ and it only adds the _session_key_ with the _session_id_ to the options hash.
+
+Rails uses the result of _default_url_options_ method for Path / URL generation. Because of that, the _session_key_ and _session_id_ will be added to every Paths and URL generated in _(cookieless_session enabled)_ controllers.
 
 ## Requirements
 
@@ -56,10 +66,32 @@ If you want to disable sessions via GET parameter for a certain controller, you 
         end
     end
 ```
-## Implementation
 
-There isn't any magic in this gem. This gem has only one module which implements a concern for controllers. The important method in this module is _default_url_options_ and it only adds the _session_key_ with the _session_id_ to the options hash.
+### Hint
 
+If you want to overwrite _default_url_options_ in one of your controllers that use _cookieless_sessions_ and you want to keep that functionality, you should use _super.dup_ and work on a copy:
+
+```ruby
+    class AnotherController < ApplicationController
+        def default_url_options
+            options ||= super.dup || {}
+            options[:foo] = :bar
+            return options
+        end
+    end
+```
+
+## Security
+
+There is one security impact: If you copy & paste a URL with your Sessions-ID to a friend and he has cookies disabled _(this won't be happen if he has cookies enabled)_, he will get your session _(e.g. he will be logged in with your account, depends on the application)_.
+
+Two countermeasure could be to bind sessions to the client's IP-Address and add a session lifetime. For both you can use the [frikandel](https://rubygems.org/gems/frikandel) gem. This should make it harder to steal and fix sessions.
+
+## Changes
+
+* v1.0.0 -- first release with complete README; no code changes
+* v0.0.2 -- improved and more flexible version with tests
+* v0.0.1 -- initial and work-in-progress version without any tests
 
 ## Contributing
 
