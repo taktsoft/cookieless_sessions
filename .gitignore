@@ -15,11 +15,8 @@ spec/reports
 test/tmp
 test/version_tmp
 tmp
-*.bundle
-*.so
-*.o
-*.a
-mkmf.log
 
-spec/dummy/log
 spec/dummy/db
+spec/dummy/log
+.ruby-gemset
+.ruby-version
