@@ -87,8 +87,17 @@ There is one security impact: If you copy & paste a URL with your Sessions-ID to
 
 Two countermeasure could be to bind sessions to the client's IP-Address and add a session lifetime. For both you can use the [frikandel](https://rubygems.org/gems/frikandel) gem. This should make it harder to steal and fix sessions.
 
+## Test
+
+To run the test suite with different rails version by selecting the corresponding gemfile. You can use this one liners:
+
+    $ export BUNDLE_GEMFILE=Gemfile.rails-3.2.x && bundle update && bundle exec rake spec
+    $ export BUNDLE_GEMFILE=Gemfile.rails-4.0.x && bundle update && bundle exec rake spec
+    $ export BUNDLE_GEMFILE=Gemfile.rails-4.1.x && bundle update && bundle exec rake spec
+
 ## Changes
 
+* v1.0.1 -- added Rails32DestroyableSessionPatch: sets SID in options on destroy
 * v1.0.0 -- first release with complete README; no code changes
 * v0.0.2 -- improved and more flexible version with tests
 * v0.0.1 -- initial and work-in-progress version without any tests

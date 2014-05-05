@@ -1,5 +1,6 @@
 Rails.application.routes.draw do
   get "/cookieless" => "cookieless#index", as: :root
+  get "/cookieless/reset" => "cookieless#reset_index", as: :reset_root
   get "/cookieless/redirect" => "cookieless#redirect_to_root", as: :redirect_to_root
 end
 
@@ -16,7 +17,13 @@ class CookielessController < ApplicationController
   def index
     session[:useless] = :content
 
-    render text: "CookielessController#Index\r\nSession-Key: '#{session_key}'\r\nSession-ID: '#{session_id}'\r\n"
+    render text: "CookielessController#Index\r\nSession-Key: '#{session_key}'\r\nSession-ID: '#{session_id}'\r\nRails-Version: '#{Rails.version}'\r\n"
+  end
+
+  def reset_index
+    reset_session
+
+    render text: "CookielessController#Index\r\nSession-Key: '#{session_key}'\r\nSession-ID: '#{session_id}'\r\nRails-Version: '#{Rails.version}'\r\n"
   end
 
   def redirect_to_root

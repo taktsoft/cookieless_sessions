@@ -17,6 +17,7 @@ describe 'Cookieless', js: true do
       visit root_path # visit first time to get a valid session_id
 
       session_id = extract_session_id_from_headers(page.response_headers)
+      session_id.should be_present
 
       page.should have_content("'#{session_id}'")
 
@@ -29,10 +30,19 @@ describe 'Cookieless', js: true do
 
       page.should have_content("'#{session_id}'")
     end
+
+    it "returns a session_id with reset_session before" do
+      visit reset_root_path
+
+      session_id = extract_session_id_from_headers(page.response_headers)
+      session_id.should be_present
+
+      page.should have_content("'#{session_id}'")
+    end
   end
 
 
-  context "with cookies cookies enabled" do
+  context "with cookies enabled" do
     before(:each) do
       Capybara.current_session.driver.cookies_enabled = true
     end
@@ -45,6 +55,7 @@ describe 'Cookieless', js: true do
       visit root_path # visit first time to get a valid session_id.
 
       session_id = extract_session_id_from_headers(page.response_headers)
+      session_id.should be_present
 
       page.should have_content("'#{session_id}'")
 
@@ -55,6 +66,7 @@ describe 'Cookieless', js: true do
       visit root_path # visit again with fresh session to get a new session_id.
 
       other_session_id = extract_session_id_from_headers(page.response_headers)
+      other_session_id.should be_present
 
       page.should have_content("'#{other_session_id}'")
 

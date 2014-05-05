@@ -1,4 +1,5 @@
 require "cookieless_sessions/version"
+require "cookieless_sessions/rails_32_patch"
 
 module CookielessSessions
   module EnabledController
