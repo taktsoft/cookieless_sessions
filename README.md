@@ -1,7 +1,8 @@
 # CookielessSessions
-[![Gem Version](https://badge.fury.io/rb/cookieless_sessions.png)](http://badge.fury.io/rb/cookieless_sessions) 
+[![Gem Version](https://badge.fury.io/rb/cookieless_sessions.png)](http://badge.fury.io/rb/cookieless_sessions)
 [![Build Status](https://api.travis-ci.org/taktsoft/cookieless_sessions.png)](https://travis-ci.org/taktsoft/cookieless_sessions)
 [![Code Climate](https://codeclimate.com/github/taktsoft/cookieless_sessions.png)](https://codeclimate.com/github/taktsoft/cookieless_sessions)
+[![Dependency Status](https://gemnasium.com/taktsoft/cookieless_sessions.svg)](https://gemnasium.com/taktsoft/cookieless_sessions)
 
 CookielessSessions implements a fallback mechanism for keeping Session-IDs _(via GET-Parameter)_ on clients that doesn't support or allow cookies.
 
