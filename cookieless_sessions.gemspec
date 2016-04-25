@@ -32,4 +32,6 @@ Gem::Specification.new do |spec|
   spec.add_development_dependency "rails", [">= 3.2.0", "< 5.0"]
   spec.add_development_dependency "sqlite3", "~> 1.3"
   spec.add_development_dependency "redis-session-store", "~> 0.7"
+  spec.add_development_dependency "minitest"
+  spec.add_development_dependency "test-unit"
 end
