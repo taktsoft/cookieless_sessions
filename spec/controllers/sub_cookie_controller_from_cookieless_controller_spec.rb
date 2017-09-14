@@ -19,18 +19,18 @@ end
 describe SubCookieController do
 
   it "doesn't include session_key in default_url_options" do
-    controller.stub(:session_key).and_return('some_session_key')
-    controller.stub(:session_id).and_return('some_session_id')
+    allow(controller).to receive(:session_key).and_return('some_session_key')
+    allow(controller).to receive(:session_id).and_return('some_session_id')
 
-    controller.send(:default_url_options).should_not include('some_session_key')
+    expect(controller.send(:default_url_options)).not_to include('some_session_key')
   end
 
   it "doesn't include session_key=session_id in generated path or url" do
-    controller.stub(:session_key).and_return('some_session_key')
-    controller.stub(:session_id).and_return('some_session_id')
+    allow(controller).to receive(:session_key).and_return('some_session_key')
+    allow(controller).to receive(:session_id).and_return('some_session_id')
 
-    controller.root_path.should_not include("some_session_key=some_session_id")
-    controller.root_url.should_not include("some_session_key=some_session_id")
+    expect(controller.root_path).not_to include("some_session_key=some_session_id")
+    expect(controller.root_url).not_to include("some_session_key=some_session_id")
   end
 
 end
