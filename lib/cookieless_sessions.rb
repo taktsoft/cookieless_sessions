@@ -21,8 +21,14 @@ module CookielessSessions
       Rails.application.config.session_options[:key]
     end
 
-    def session_id
-      request.session_options[:id]
+    if Rails::VERSION::MAJOR < 4
+      def session_id
+        request.session_options[:id]
+      end
+    else
+      def session_id
+        request.session.id
+      end
     end
 
     def session_is_not_cookie_only?
