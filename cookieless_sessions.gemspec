@@ -29,7 +29,7 @@ Gem::Specification.new do |spec|
   spec.add_development_dependency "launchy", "~> 2.4"
   spec.add_development_dependency "poltergeist", "~> 1.5"
   spec.add_development_dependency "pry", "~> 0.9"
-  spec.add_development_dependency "rails", '5.1.0'
+  spec.add_development_dependency "rails", [">= 4.0.0", "<= 5.1.0"]
   spec.add_development_dependency "sqlite3", "~> 1.3"
   #spec.add_development_dependency "redis-session-store", "~> 0.7"
   spec.add_development_dependency "minitest"

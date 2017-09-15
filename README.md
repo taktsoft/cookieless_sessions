@@ -92,9 +92,11 @@ Two countermeasure could be to bind sessions to the client's IP-Address and add 
 
 To run the test suite with different rails version by selecting the corresponding gemfile. You can use this one liners:
 
-    $ export BUNDLE_GEMFILE=Gemfile.rails-3.2.x && bundle update && bundle exec rake spec
     $ export BUNDLE_GEMFILE=Gemfile.rails-4.0.x && bundle update && bundle exec rake spec
     $ export BUNDLE_GEMFILE=Gemfile.rails-4.1.x && bundle update && bundle exec rake spec
+    $ export BUNDLE_GEMFILE=Gemfile.rails-4.2.x && bundle update && bundle exec rake spec
+    $ export BUNDLE_GEMFILE=Gemfile.rails-5.0.x && bundle update && bundle exec rake spec
+    $ export BUNDLE_GEMFILE=Gemfile.rails-5.1.x && bundle update && bundle exec rake spec
 
 ## Changes
 
