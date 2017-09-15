@@ -3,6 +3,8 @@ rvm:
   - '1.9.3'
   - '2.0.0'
   - '2.1.1'
+  - '2.2.7'
+  - '2.3.4'
   - ruby-head
 services:
   - redis-server
@@ -16,7 +18,9 @@ gemfile:
 matrix:
   allow_failures:
     - rvm: ruby-head
-    - gemfile: Gemfile.rails-head
+      gemfile: Gemfile.rails-head
+    - rvm: '1.9.3'
+      gemfile: Gemfile.rails-head
   exclude:
     - rvm: '1.9.3'
       gemfile: Gemfile.rails-5.0.x
@@ -28,5 +32,15 @@ matrix:
       gemfile: Gemfile.rails-5.1.x
     - rvm: '2.1.1'
       gemfile: Gemfile.rails-5.0.x
-    - rvm: '2.1.1'
-      gemfile: Gemfile.rails-5.1.x
+    - rvm: '2.2.7'
+      gemfile: Gemfile.rails-4.0.x
+    - rvm: '2.2.7'
+      gemfile: Gemfile.rails-4.1.x
+    - rvm: '2.2.7'
+      gemfile: Gemfile.rails-4.2.x
+    - rvm: '2.3.4'
+      gemfile: Gemfile.rails-4.0.x
+    - rvm: '2.3.4'
+      gemfile: Gemfile.rails-4.1.x
+    - rvm: '2.3.4'
+      gemfile: Gemfile.rails-4.2.x
