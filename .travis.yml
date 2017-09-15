@@ -17,10 +17,9 @@ gemfile:
   - Gemfile.rails-head
 matrix:
   allow_failures:
-    - rvm: ruby-head
-      gemfile: Gemfile.rails-head
     - rvm: '1.9.3'
-      gemfile: Gemfile.rails-head
+    - rvm: ruby-head
+    - gemfile: Gemfile.rails-head
   exclude:
     - rvm: '1.9.3'
       gemfile: Gemfile.rails-5.0.x
