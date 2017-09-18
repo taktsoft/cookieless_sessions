@@ -4,4 +4,3 @@ source 'https://rubygems.org'
 gemspec
 
 gem 'rails', '~> 4.1.0'
-gem "redis-session-store", git: "https://github.com/CapCap/redis-session-store"
