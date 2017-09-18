@@ -1,5 +1,4 @@
 require "cookieless_sessions/version"
-require "cookieless_sessions/rails_32_patch"
 
 module CookielessSessions
   module EnabledController
@@ -22,7 +21,7 @@ module CookielessSessions
     end
 
     def session_id
-      request.session_options[:id]
+      request.session.id
     end
 
     def session_is_not_cookie_only?

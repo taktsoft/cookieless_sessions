@@ -17,13 +17,21 @@ class CookielessController < ApplicationController
   def index
     session[:useless] = :content
 
-    render text: "CookielessController#Index\r\nSession-Key: '#{session_key}'\r\nSession-ID: '#{session_id}'\r\nRails-Version: '#{Rails.version}'\r\n"
+    if Rails::VERSION::MAJOR >= 4.1
+      render plain: "CookielessController#Index\r\nSession-Key: '#{session_key}'\r\nSession-ID: '#{session_id}'\r\nRails-Version: '#{Rails.version}'\r\n"
+    else
+      render text: "CookielessController#Index\r\nSession-Key: '#{session_key}'\r\nSession-ID: '#{session_id}'\r\nRails-Version: '#{Rails.version}'\r\n"
+    end
   end
 
   def reset_index
     reset_session
 
-    render text: "CookielessController#Index\r\nSession-Key: '#{session_key}'\r\nSession-ID: '#{session_id}'\r\nRails-Version: '#{Rails.version}'\r\n"
+    if Rails::VERSION::MAJOR >= 4.1
+      render plain: "CookielessController#Index\r\nSession-Key: '#{session_key}'\r\nSession-ID: '#{session_id}'\r\nRails-Version: '#{Rails.version}'\r\n"
+    else
+      render text: "CookielessController#Index\r\nSession-Key: '#{session_key}'\r\nSession-ID: '#{session_id}'\r\nRails-Version: '#{Rails.version}'\r\n"
+    end
   end
 
   def redirect_to_root
