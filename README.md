@@ -18,7 +18,7 @@ Rails uses the result of _default_url_options_ method for Path / URL generation.
 
 ## Requirements
 
-An application based on Rails 3.x or 4.x configured with a session storage that supports the _cookie_only: false_ option (e.g. [redis-session-store](https://rubygems.org/gems/redis-session-store)).
+An application based on Rails 4.x or 5.0 configured with a session storage that supports the _cookie_only: false_ option (e.g. [redis-session-store](https://rubygems.org/gems/redis-session-store)).
 
 ## Installation
 
@@ -99,6 +99,7 @@ To run the test suite with different rails version by selecting the correspondin
 
 ## Changes
 
+* v1.1.0 -- added support for rails-5.0; remove support for rails-3.2
 * v1.0.1 -- added Rails32DestroyableSessionPatch: sets SID in options on destroy
 * v1.0.0 -- first release with complete README; no code changes
 * v0.0.2 -- improved and more flexible version with tests
