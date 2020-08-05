@@ -25,13 +25,13 @@ Gem::Specification.new do |spec|
 
   spec.add_development_dependency "bundler"
   spec.add_development_dependency "rake", "~> 10.0"
-  spec.add_development_dependency 'rspec-rails', '~> 3.0'
+  spec.add_development_dependency 'rspec-rails', ">= 3.0"
   spec.add_development_dependency "guard-rspec", "~> 4.2"
   spec.add_development_dependency "capybara", "~> 2.2"
   spec.add_development_dependency "launchy", "~> 2.4"
   spec.add_development_dependency "poltergeist", "~> 1.5"
   spec.add_development_dependency "pry", "~> 0.9"
-  spec.add_development_dependency "rails",  ">= 3.2.0"
+  spec.add_development_dependency "rails", [">= 4.0.0"
   spec.add_development_dependency "sqlite3", "~> 1.3"
   spec.add_development_dependency "minitest"
   spec.add_development_dependency "test-unit"

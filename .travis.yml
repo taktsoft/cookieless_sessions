@@ -4,7 +4,11 @@ rvm:
   - '2.5'
   - '2.6'
   - '2.7'
-  - ruby-head
+  - ruby-
+cron:
+  - branch: master
+      interval: daily
+      options: always run
 services:
   - redis-server
 gemfile:
@@ -13,7 +17,6 @@ gemfile:
   - Gemfile.rails-head
 matrix:
   allow_failures:
-    - rvm: '1.9.3'
     - rvm: ruby-head
     - gemfile: Gemfile.rails-head
   exclude:
@@ -21,8 +24,3 @@ matrix:
       gemfile: Gemfile.rails-6.0.x
     - rvm: 2.4
       gemfile: Gemfile.rails-head
-
-
-
-
-      
