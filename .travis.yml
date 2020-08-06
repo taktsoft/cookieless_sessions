@@ -4,11 +4,7 @@ rvm:
   - '2.5'
   - '2.6'
   - '2.7'
-  - ruby-
-cron:
-  - branch: master
-      interval: daily
-      options: always run
+  - ruby-head
 services:
   - redis-server
 gemfile:
